@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador PDF - Escáner de Documentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #B71C1C, #D32F2F);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 40px rgba(183, 28, 28, 0.3);
+        }
+        
+        .logo span {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .feature p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a73e8;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(26, 115, 232, 0.4);
+        }
+        
+        .links {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .links a:hover {
+            color: #fff;
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <span>PDF</span>
+        </div>
+        
+        <h1>Creador PDF</h1>
+        <p class="tagline">Tu escáner de documentos de bolsillo</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>📷 Escaneo Inteligente</h3>
+                <p>Detección automática de bordes y corrección de perspectiva.</p>
+            </div>
+            <div class="feature">
+                <h3>🎨 Filtros Pro</h3>
+                <p>Documento, B/N, escala de grises y más.</p>
+            </div>
+            <div class="feature">
+                <h3>✍️ Firma Digital</h3>
+                <p>Añade tu firma a cualquier documento.</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Seguro</h3>
+                <p>Protege con PIN, patrón o huella.</p>
+            </div>
+        </div>
+        
+        <a href="#" class="download-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 2H6.477C5.768 2 5.5 2.768 5.5 3.477v17.046c0 .709.768.977 1.477.977h11.046c.709 0 .977-.268.977-.977V3.477C19 2.768 18.232 2 17.523 2zM12 19.5c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5z"/>
+            </svg>
+            Descargar en Google Play
+        </a>
+        
+        <div class="links">
+            <a href="privacidad.html">Política de Privacidad</a>
+            <a href="mailto:tu@email.com">Contacto</a>
+        </div>
+        
+        <footer>
+            <p>© 2026 Creador PDF. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
