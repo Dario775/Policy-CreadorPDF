@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+      CONFIGURACIÓN DE ADMOB (PUBLICIDAD)
+      ====================================
+      Instrucciones para Producción:
+      1. Crea una cuenta en https://apps.admob.com/
+      2. Registra tu aplicación (Android).
+      3. Copia el "App ID" y pégalo abajo en 'admob_app_id'.
+      4. Crea un bloque de anuncios tipo "Banner" y pega su ID en 'admob_banner_id'.
+      5. Crea un bloque de anuncios tipo "Intersticial" y pega su ID en 'admob_interstitial_id'.
+      
+      NOTA: Mientras desarrollas, MANTÉN ESTOS IDs DE PRUEBA de Google. 
+      Si usas tus IDs reales mientras programas, Google podría banear tu cuenta por "tráfico inválido".
+      Solo cámbialos justo antes de generar el APK final para la Play Store.
+    -->
+    
+    <!-- ID de la Aplicación -->
+    <string name="admob_app_id">ca-app-pub-2912241998250947~5920052185</string>
+
+    <!-- ID del bloque Banner (Parte inferior pantallas) -->
+    <string name="admob_banner_id">ca-app-pub-2912241998250947/6652175659</string>
+
+    <!-- ID del bloque Intersticial (Pantalla completa al guardar PDF) -->
+    <string name="admob_interstitial_id">ca-app-pub-2912241998250947/4335952179</string>
+
+</resources>

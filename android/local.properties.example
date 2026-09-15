@@ -1,0 +1,5 @@
+sdk.dir=C:\\Users\\USUARIO\\AppData\\Local\\Android\\Sdk
+KEYSTORE_FILE=app/creadorpdf-upload-2026.jks
+KEYSTORE_PASSWORD=CONTRASENA_PRIVADA
+KEY_ALIAS=upload
+KEY_PASSWORD=CONTRASENA_PRIVADA

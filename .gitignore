@@ -1,0 +1,20 @@
+# Android Studio and local Gradle state
+android/.gradle/
+android/.idea/
+android/**/build/
+android/local.properties*
+!android/local.properties.example
+
+# Firebase configuration and signing material
+android/app/google-services.json
+*.jks
+*.keystore
+*.pem
+
+# Generated packages
+*.apk
+*.aab
+
+# Operating system files
+.DS_Store
+Thumbs.db
