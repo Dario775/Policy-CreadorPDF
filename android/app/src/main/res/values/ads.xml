@@ -10,9 +10,7 @@
       4. Crea un bloque de anuncios tipo "Banner" y pega su ID en 'admob_banner_id'.
       5. Crea un bloque de anuncios tipo "Intersticial" y pega su ID en 'admob_interstitial_id'.
       
-      NOTA: Mientras desarrollas, MANTÉN ESTOS IDs DE PRUEBA de Google. 
-      Si usas tus IDs reales mientras programas, Google podría banear tu cuenta por "tráfico inválido".
-      Solo cámbialos justo antes de generar el APK final para la Play Store.
+      Usa dispositivos de prueba de AdMob durante el desarrollo para evitar trafico invalido.
     -->
     
     <!-- ID de la Aplicación -->

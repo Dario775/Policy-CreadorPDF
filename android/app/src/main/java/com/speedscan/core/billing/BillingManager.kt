@@ -27,6 +27,9 @@ class BillingManager @Inject constructor(
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
 
+    private val _productPrice = MutableStateFlow<String?>(null)
+    val productPrice: StateFlow<String?> = _productPrice
+
     // Callback para notificar resultados de compra
     var onPurchaseResult: ((Boolean, String) -> Unit)? = null
 
@@ -61,6 +64,7 @@ class BillingManager @Inject constructor(
     }
 
     private fun queryProductDetails() {
+        _productPrice.value = null
         val productList = listOf(
             QueryProductDetailsParams.Product.newBuilder()
                 .setProductId(PREMIUM_PRODUCT_ID)
@@ -76,10 +80,15 @@ class BillingManager @Inject constructor(
             if (billingResult.responseCode != BillingClient.BillingResponseCode.OK ||
                 result.productDetailsList.isEmpty()
             ) {
+                productDetails = null
+                _productPrice.value = null
                 android.util.Log.e("BillingManager", "Producto no encontrado: $PREMIUM_PRODUCT_ID")
                 onPurchaseResult?.invoke(false, "La compra Pro todavía no está disponible en Google Play.")
             } else {
                 productDetails = result.productDetailsList.firstOrNull()
+                _productPrice.value = productDetails
+                    ?.oneTimePurchaseOfferDetails
+                    ?.formattedPrice
                 android.util.Log.d("BillingManager", "Producto cargado: ${productDetails?.title}")
             }
         }

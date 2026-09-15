@@ -281,9 +281,9 @@ class MainActivity : FragmentActivity() {
                             }
                             AppScreen.PREMIUM -> {
                                 val billingIsLoading by billingManager.isLoading.collectAsState()
+                                val productPrice by billingManager.productPrice.collectAsState()
                                 
-                                // Configurar callback para resultado de compra
-                                LaunchedEffect(Unit) {
+                                DisposableEffect(Unit) {
                                     billingManager.onPurchaseResult = { _, message ->
                                         Toast.makeText(
                                             this@MainActivity, 
@@ -291,12 +291,15 @@ class MainActivity : FragmentActivity() {
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }
+                                    onDispose {
+                                        billingManager.onPurchaseResult = null
+                                    }
                                 }
                                 
                                 com.speedscan.feature.premium.PremiumSettingsScreen(
                                     currentScanCount = scanCount,
                                     isPremium = isPremium,
-                                    productPrice = premiumManager.getProductPrice(),
+                                    productPrice = productPrice ?: "---",
                                     isLoading = billingIsLoading,
                                     onBack = { currentScreen = AppScreen.HOME },
                                     onUpgrade = {

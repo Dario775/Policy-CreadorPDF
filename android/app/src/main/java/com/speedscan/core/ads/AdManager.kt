@@ -13,7 +13,6 @@ class AdManager @Inject constructor() {
 
     private var interstitialAd: InterstitialAd? = null
 
-    // IDs de prueba de AdMob
     fun loadInterstitial(context: Context) {
         val adRequest = AdRequest.Builder().build()
         // Cargar ID desde recursos centralizados
