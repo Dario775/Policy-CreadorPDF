@@ -83,25 +83,9 @@ class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pendingPdfUri = getPdfUriFromIntent(intent)
-        
-        consentManager.gatherConsent(this) { canRequestAds ->
-            if (canRequestAds) initializeAds()
-        }
 
-        // Inicializar Google Play Billing
-        billingManager.initialize()
-
-        // In-App Updates Init
-        appUpdateManager = com.google.android.play.core.appupdate.AppUpdateManagerFactory.create(this)
-        appUpdateManager.registerListener { state ->
-            if (state.installStatus() == com.google.android.play.core.install.model.InstallStatus.DOWNLOADED) {
-                popupSnackbarForCompleteUpdate()
-            }
-        }
-        checkForUpdates()
-
-        requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
-        
+        // Pintar la interfaz antes de iniciar servicios externos. Un fallo de red,
+        // Billing, UMP o Play Updates no debe dejar la actividad en negro.
         setContent {
             // Estado global de navegación y datos
             var currentScreen by remember { mutableStateOf(AppScreen.HOME) }
@@ -598,6 +582,39 @@ class MainActivity : FragmentActivity() {
                     com.speedscan.core.ads.BannerAd()
                 }
             }
+        }
+
+        // El arranque visual ya está disponible; el resto puede fallar sin impedir
+        // que el usuario entre a la aplicación.
+        lifecycleScope.launch {
+            runCatching {
+                consentManager.gatherConsent(this@MainActivity) { canRequestAds ->
+                    if (canRequestAds) initializeAds()
+                }
+            }.onFailure { it.printStackTrace() }
+        }
+
+        runCatching {
+            billingManager.initialize()
+        }.onFailure { it.printStackTrace() }
+
+        runCatching {
+            appUpdateManager = com.google.android.play.core.appupdate.AppUpdateManagerFactory.create(this)
+            appUpdateManager.registerListener { state ->
+                if (state.installStatus() == com.google.android.play.core.install.model.InstallStatus.DOWNLOADED) {
+                    popupSnackbarForCompleteUpdate()
+                }
+            }
+            checkForUpdates()
+        }.onFailure { it.printStackTrace() }
+
+        // Solicitar cámara después de dibujar Home evita un arranque visualmente negro.
+        if (androidx.core.content.ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.CAMERA
+            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
         }
     }
 

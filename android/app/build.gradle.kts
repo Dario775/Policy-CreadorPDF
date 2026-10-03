@@ -31,8 +31,8 @@ android {
         applicationId = "com.speedscan"
         minSdk = 26 // Android 8.0 (Soporte PDF Nativo)
         targetSdk = 36
-        versionCode = 3
-        versionName = "1.1.0"
+        versionCode = 4
+        versionName = "1.1.1"
         
         // Optimización de recursos
         vectorDrawables.useSupportLibrary = true
